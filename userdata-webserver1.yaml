@@ -1,0 +1,9 @@
+#cloud-config
+users:
+  - name: ubuntu
+    ssh-authorized-keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFTpBJNPuYjaDheQjVLVZas37Q9tyKuoT9YcN+SvTxc5 student@DESKTOP-1NUD89T
+    shell: /bin/bash
+packages:
+  - wget
+  - ntpdate
