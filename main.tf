@@ -57,14 +57,14 @@ resource "azurerm_linux_virtual_machine" "vm" {
   resource_group_name = data.azurerm_resource_group.rg.name
   location            = data.azurerm_resource_group.rg.location
   size                = var.vm_size
-  admin_username      = "Student"
+  admin_username      = "iac"
   network_interface_ids = [
     azurerm_network_interface.nic[count.index].id
   ]
   disable_password_authentication = true
 
   admin_ssh_key {
-    username   = "Student"
+    username   = "iac"
     public_key = var.ssh_public_key
   }
 
@@ -76,7 +76,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   }
 
   custom_data = base64encode(templatefile("${path.module}/cloud-init.tpl", {
-    username = "Student"
+    username = "iac"
   }))
 
   provisioner "local-exec" {
